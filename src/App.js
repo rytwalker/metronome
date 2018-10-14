@@ -65,11 +65,28 @@ class App extends Component {
   };
 
   render() {
-    const { bpm, isPlaying } = this.state;
+    const { bpm, isPlaying, count } = this.state;
     return (
       <div className="App">
         <h1 className="title">Metronome</h1>
-        <div className="bpm">{bpm} BPM</div>
+        <div className="beats">
+          <div
+            className="beat"
+            style={count === 0 ? { background: '#4b6584' } : null}
+          />
+          <div
+            className="beat"
+            style={count === 1 ? { background: '#4b6584' } : null}
+          />
+          <div
+            className="beat"
+            style={count === 2 ? { background: '#4b6584' } : null}
+          />
+          <div
+            className="beat"
+            style={count === 3 ? { background: '#4b6584' } : null}
+          />
+        </div>
         <input
           className="slider"
           type="range"
@@ -78,6 +95,7 @@ class App extends Component {
           value={bpm}
           onChange={this.handleBpmChange}
         />
+        <div className="bpm">{bpm} BPM</div>
         <button className="btn" onClick={this.toggleMetronomeClick}>
           {isPlaying ? 'Stop' : 'Start'}
         </button>
